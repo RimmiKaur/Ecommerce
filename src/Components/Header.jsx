@@ -22,6 +22,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import OffCanvas from './OffCanvas'
+import { Link } from 'react-router-dom'
 
 const products = [
     { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -37,8 +38,8 @@ const products = [
 
 export default function Header() {
 
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-    const [open, setOpen] = useState(false)
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
     var setCanvas = () =>{
       setOpen(!open);
@@ -74,18 +75,18 @@ export default function Header() {
             <PopoverGroup className="hidden lg:flex lg:gap-x-12">
               
 
-              <a href="#" className="text-sm/6 font-semibold text-gray-900">
+              <Link to="/" className="text-sm/6 font-semibold text-gray-900">
                 Home
-              </a>
+              </Link>
               <a href="#" className="text-sm/6 font-semibold text-gray-900">
                 About Us
               </a>
               <a href="#" className="text-sm/6 font-semibold text-gray-900">
                 Servies
               </a>
-              <a href="#" className="text-sm/6 font-semibold text-gray-900">
+              <Link to="/filterProducts" className="text-sm/6 font-semibold text-gray-900">
                 Products
-              </a>
+              </Link>
 
             </PopoverGroup>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -120,12 +121,12 @@ export default function Header() {
                 <div className="-my-6 divide-y divide-gray-500/10">
                   <div className="space-y-2 py-6">
                     
-                    <a
-                      href="#"
+                    <Link
+                      href="/"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       Home
-                    </a>
+                    </Link>
                     <a
                       href="#"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
@@ -139,12 +140,12 @@ export default function Header() {
                       Services
                     </a>
 
-                    <a
-                      href="#"
+                    <Link
+                      to="/filterProducts"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       Products
-                    </a>
+                    </Link>
                   </div>
                   <div className="py-6">
                     <a

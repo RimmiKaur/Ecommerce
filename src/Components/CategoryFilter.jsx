@@ -109,8 +109,7 @@ export default function CategoryFilter() {
     
   return (
     <>
-        <Banner />
-        <Header />
+      
         <div className="bg-white">
             <div>
                 {/* Mobile filter dialog */}

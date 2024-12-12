@@ -1,14 +1,25 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+
 import './index.css'
-import Home from './Components/Home'
-import CategoryFilter from './Components/CategoryFilter'
-import OffCanvas from './Components/OffCanvas'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router";
+import CategoryFilter from "./Components/CategoryFilter";
+import Home from "./Components/Home" ;
+import RootLayout from './Components/RootLayout';
+import ProductDetails from './Components/ProductDetails';
 
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <CategoryFilter/>
-    
-  </StrictMode>,
-)
+const root = document.getElementById("root");
+
+ReactDOM.createRoot(root).render(
+  <BrowserRouter>
+    <Routes>
+      <Route element={<RootLayout/>}>
+        <Route path="/" element={<Home />} />
+        <Route path="/filterProducts" element={<CategoryFilter />} />
+        <Route path="/productDetails/:productId" element={<ProductDetails />} />
+
+      </Route>
+    </Routes>
+  </BrowserRouter>
+);

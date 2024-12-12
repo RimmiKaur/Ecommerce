@@ -18,14 +18,15 @@ import axios from 'axios';
 
     useEffect(()=>{
     
-      axios.get('https://dummyjson.com/products?limit=12').
+      axios.get('https://wscubetech.co/ecommerce-api/products.php?limit=20').
       then((success)=>{
-        setProducts(success.data.products);
+        setProducts(success.data.data);
       }).
       catch((error)=>{
         console.log(error);
         })
     },[])
+  
 
     return (
       <div className="bg-white">
