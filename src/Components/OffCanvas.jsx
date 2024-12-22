@@ -23,6 +23,10 @@ export default function OffCanvas({open, setOpen}) {
   }, []);
   
   
+  const saveCartToLocalStorage = (cart) => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+  
   const removeCart = (product) => {
     const price = Number(product.price);
   
