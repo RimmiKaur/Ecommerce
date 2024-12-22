@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import {
   Dialog,
@@ -23,6 +23,7 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import OffCanvas from './OffCanvas'
 import { Link } from 'react-router-dom'
+import { context } from '../ContextAPI/Context'
 
 const products = [
     { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -41,6 +42,8 @@ export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [open, setOpen] = useState(false);
 
+    let {addCart}=useContext(context);
+
     var setCanvas = () =>{
       setOpen(!open);
       
@@ -50,7 +53,7 @@ export default function Header() {
     <>
     
     <OffCanvas open={open} setOpen={setOpen}/>
-        <header className="bg-white sticky top-0 shadow">
+        <header className="bg-white sticky top-0 shadow  z-10">
           <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
             <div className="flex lg:flex-1">
               <a href="#" className="-m-1.5 p-1.5">
@@ -92,7 +95,7 @@ export default function Header() {
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
               <a href="#" className="text-sm/6 font-semibold p-2 bg-black text-white"
               onClick={ setCanvas }>
-                Contact us <span aria-hidden="true">&rarr;</span>
+                View Cart ({addCart.length}) <span aria-hidden="true">&rarr;</span>
               </a>
             </div>
           </nav>

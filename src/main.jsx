@@ -7,12 +7,14 @@ import CategoryFilter from "./Components/CategoryFilter";
 import Home from "./Components/Home" ;
 import RootLayout from './Components/RootLayout';
 import ProductDetails from './Components/ProductDetails';
+import Context from './ContextAPI/Context';
 
 
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
   <BrowserRouter>
+    <Context>
     <Routes>
       <Route element={<RootLayout/>}>
         <Route path="/" element={<Home />} />
@@ -20,6 +22,7 @@ ReactDOM.createRoot(root).render(
         <Route path="/productDetails/:productId" element={<ProductDetails />} />
 
       </Route>
-    </Routes>
+    </Routes> 
+    </Context>
   </BrowserRouter>
 );

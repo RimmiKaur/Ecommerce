@@ -69,23 +69,26 @@ export default function ProductDetails() {
   var params = useParams();
 
   
-  const [productDetails , setProductdetails]=useState();
+  const [detailsProduct , setDetailsProduct]= useState([]);
+
+  // console.log(params);
 
   useEffect(() => {
     if (params.productId) {
       axios
         .get(`https://wscubetech.co/ecommerce-api/productdetails.php?id=${params.productId}`)
         .then((result) => {
-          console.log("Product Data:", result.data.product);
-          setProductdetails(result.data.product);
-          
-          console.log(productDetails);
+          var data = result.data.product;
+          setDetailsProduct(data); // State update
         })
         .catch((err) => {
           console.error("Error fetching product details:", err);
         });
     }
   }, [params.productId]);
+  
+ 
+  
 
 
   return (
@@ -149,13 +152,13 @@ export default function ProductDetails() {
         {/* Product info */}
         <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.name}</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{detailsProduct.name}</h1>
           </div>
 
           {/* Options */}
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+            <p className="text-3xl tracking-tight text-gray-900">${detailsProduct.price}</p>
 
             {/* Reviews */}
             <div className="mt-6">
